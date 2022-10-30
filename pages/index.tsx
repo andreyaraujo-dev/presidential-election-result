@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Box,
   Button,
   Center,
@@ -17,6 +18,7 @@ import {
 import { RepeatIcon } from "@chakra-ui/icons";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Head from "next/head";
 
 type Candidate = {
   seq: string;
@@ -65,7 +67,10 @@ export default function Home() {
   }
 
   return (
-    <Container>
+    <Container bg="#f5f5f5">
+      <Head>
+        <title>Eleições Presidenciais - Brasil 2022</title>
+      </Head>
       <Center my={4}>
         <Heading color="blackAlpha.700">Eleições Presidenciais 2022</Heading>
       </Center>
@@ -86,11 +91,14 @@ export default function Home() {
           borderRadius={5}
           borderColor="#e1e1e1"
           color="blackAlpha.600"
+          bg="#FFF"
+          boxShadow="md"
         >
           <Table variant="simple">
             <TableCaption>Votos válidos {validVotes}%</TableCaption>
             <Thead>
               <Tr>
+                <Th></Th>
                 <Th>Nº</Th>
                 <Th>Nome</Th>
                 <Th isNumeric>Percentual</Th>
@@ -99,9 +107,20 @@ export default function Home() {
             <Tbody>
               {candidateData.map((candidate) => (
                 <Tr key={candidate.seq}>
+                  <Td>
+                    <Avatar
+                      // size="sm"
+                      name={candidate.nm}
+                      src={
+                        candidate.n === "13" ? "./lula.jpg" : "./bolsonaro.png"
+                      }
+                    />
+                  </Td>
                   <Td>{candidate.n}</Td>
                   <Td>{candidate.nm}</Td>
-                  <Td isNumeric>{candidate.pvap}%</Td>
+                  <Td isNumeric>
+                    <b>{candidate.pvap}%</b>
+                  </Td>
                 </Tr>
               ))}
             </Tbody>
