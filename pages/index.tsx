@@ -51,8 +51,6 @@ export default function Home() {
       {
         method: "GET",
         mode: "cors",
-        cache: "default",
-        headers: { "Access-Control-Allow-Origin": "*" },
       }
     )
       .then((response) => response.json())
