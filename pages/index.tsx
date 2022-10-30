@@ -41,11 +41,19 @@ export default function Home() {
   const [validVotes, setValidVotes] = useState("");
 
   async function getElectionData(): Promise<ElectionData> {
-    const response = await axios.request({
-      method: "GET",
-      url: "https://resultados.tse.jus.br/oficial/ele2022/545/dados-simplificados/br/br-c0001-e000545-r.json",
-    });
-    return response.data;
+    // const response = await axios.request({
+    //   method: "GET",
+    //   url: "https://resultados.tse.jus.br/oficial/ele2022/545/dados-simplificados/br/br-c0001-e000545-r.json",
+    // });
+
+    const response = await fetch(
+      "https://resultados.tse.jus.br/oficial/ele2022/545/dados-simplificados/br/br-c0001-e000545-r.json",
+      { method: "GET", mode: "cors", cache: "default" }
+    )
+      .then((response) => response.json())
+      .catch((error) => console.log(error));
+
+    return response;
   }
 
   useEffect(() => {
