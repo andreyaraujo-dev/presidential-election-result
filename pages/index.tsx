@@ -32,6 +32,8 @@ type Candidate = {
 type ElectionData = {
   cand: Candidate[];
   pvv: string;
+  psi: string;
+  pst: string;
 };
 
 export default function Home() {
@@ -63,7 +65,7 @@ export default function Home() {
   async function updateData(): Promise<void> {
     const response = await getElectionData();
     setCandidateData(response.cand);
-    setValidVotes(response.pvv);
+    setValidVotes(response.psi);
   }
 
   return (
