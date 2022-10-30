@@ -48,7 +48,12 @@ export default function Home() {
 
     const response = await fetch(
       "https://resultados.tse.jus.br/oficial/ele2022/545/dados-simplificados/br/br-c0001-e000545-r.json",
-      { method: "GET", mode: "cors", cache: "default" }
+      {
+        method: "GET",
+        mode: "no-cors",
+        cache: "default",
+        headers: { "Access-Control-Allow-Origin": "*" },
+      }
     )
       .then((response) => response.json())
       .catch((error) => console.log(error));
