@@ -50,7 +50,7 @@ export default function Home() {
       "https://resultados.tse.jus.br/oficial/ele2022/545/dados-simplificados/br/br-c0001-e000545-r.json",
       {
         method: "GET",
-        mode: "no-cors",
+        mode: "cors",
         cache: "default",
         headers: { "Access-Control-Allow-Origin": "*" },
       }
