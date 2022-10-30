@@ -97,7 +97,7 @@ export default function Home() {
           boxShadow="md"
         >
           <Table variant="simple">
-            <TableCaption>Votos válidos {validVotes}%</TableCaption>
+            <TableCaption>{validVotes}% das seções totalizadas</TableCaption>
             <Thead>
               <Tr>
                 <Th></Th>
